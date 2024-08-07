@@ -1,0 +1,17 @@
+<?php
+$key = ftok(__FILE__, 'a');
+$sem_id = sem_get($key);
+
+if (sem_acquire($sem_id)) {
+    echo "Proceso " . getmypid() . " ha adquirido el semáforo.\n";
+    
+    // Simular trabajo
+    sleep(2);
+
+    echo "Proceso " . getmypid() . " liberando el semáforo.\n";
+    sem_release($sem_id);
+} else {
+    echo "Proceso " . getmypid() . " no pudo adquirir el semáforo.\n";
+}
+?>
+
