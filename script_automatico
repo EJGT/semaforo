@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Ejecutar múltiples instancias del script PHP
+for i in {1..5}; do
+    php semaforo.php &
+done
+
+# Esperar a que todos los procesos terminen
+wait
+echo "Prueba completada."
